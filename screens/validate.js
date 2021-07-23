@@ -1,6 +1,6 @@
-export default function validation(input1, input2) {
+export default function validation(input1) {
 
-    if (input1.length>1 && input2.length>1) {
+    if (input1.length>1) {
 
         alert("Verificado")
 

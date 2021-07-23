@@ -40,7 +40,7 @@ export const login_style = StyleSheet.create({
         textAlign:'center',
         borderRadius:5,
         marginTop:hp(5),
-        fontSize:wp(1.5)+wp(1.5)
+        fontSize:wp(1.8)+wp(1.8)
     }
 
 })

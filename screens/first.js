@@ -9,29 +9,38 @@ export default class First_screen extends Component {
         super(props);
     }
 
+
+    onButton = (props) => {
+
+        const { title } = props
+        const { function_passed } = props
+
+        return(
+               
+            <TouchableHighlight style={first_style.buttons} onPress={() => function_passed()}>
+
+                 <Text style={{fontWeight:'bold', fontSize:wp(1.5)+hp(1.5), color:'white'}}> {title} </Text>
+
+            </TouchableHighlight>
+
+       )
+
+    }
+
     Login_screen = (props) => props.navigation.navigate('Iniciar sesion')
     Register_screen = (props) => props.navigation.navigate('Registro')
+    More_info_screen = (props) => props.navigation.navigate('Acerca de')
 
     render() {
 
         return (
             <View style={{alignItems:'center', padding:0, justifyContent:'center'}}>
-                <Text style={first_style.title}> Campana Login</Text>
+                <Text style={first_style.title}> CAMPANA TIENDA</Text>
 
-                <TouchableHighlight style={first_style.buttons} onPress={() => this.Register_screen(this.props)}>
+                <this.onButton title={'REGISTRARME'} function_passed={() => this.Register_screen(this.props)}/>
+                <this.onButton title={'INICIAR SESIÓN'} function_passed={() => this.Login_screen(this.props)}/>
 
-                    <Text style={{fontWeight:'bold', fontSize:wp(1.5)+hp(1.5), color:'white'}}> REGISTRARSE </Text>
-
-                </TouchableHighlight>
-
-                
-                <TouchableHighlight style={first_style.buttons} underlayColor='black' onPress={() => this.Login_screen(this.props)}>
-
-                    <Text style={{fontWeight:'bold', fontSize:wp(1.5)+hp(1.5), color:'white'}}> INICIAR SESIÓN </Text>
-
-                </TouchableHighlight>
-
-                <Text style={first_style.footer}>Acerca de nosotros</Text>
+                <Text style={first_style.footer} onPress={() => this.More_info_screen(this.props)}>Acerca de nosotros</Text>
 
             </View>
         )

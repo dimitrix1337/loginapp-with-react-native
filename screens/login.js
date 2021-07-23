@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, TextInput, TouchableHighlight } from 'react-native'
 import { login_style } from './login_style'
 import { wp,hp } from './general_style'
+import { Input } from '../input'
 
 export default class register_screen extends Component {
 
@@ -22,19 +23,9 @@ export default class register_screen extends Component {
 
                 <View style={login_style.mini_div}></View>
 
-                <TextInput 
-                placeholder='Correo electrónico'
-                placeholderTextColor='#3A3A3A'
-                style={login_style.inputs}
-                onChangeText={(email_wrote) => this.setState({email:email_wrote})}
-                />
+                <Input text={this.state.email} function_passed={(text) => this.setState({email:text})} placeholder_title={'Correo electrónico'}/>
+                <Input text={this.state.pw} function_passed={(text) => this.setState({pw:text})} placeholder_title={'Contraseña'}/>
 
-                <TextInput 
-                placeholder='Contraseña'
-                placeholderTextColor='#3A3A3A'
-                style={login_style.inputs}
-                onChangeText={(pw_wrote) => this.setState({pw:pw_wrote})}
-                />
 
                 <TouchableHighlight style={login_style.buttons}>
                     

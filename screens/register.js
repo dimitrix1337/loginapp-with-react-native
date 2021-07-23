@@ -4,6 +4,8 @@ import { register_style } from './register_style'
 import { wp,hp } from './general_style'
 import validation from './validate'
 import firebase from '../firebase'
+import { Input } from '../input'
+import my_btn from './my_button'
 
 
 export default class register_screen extends Component {
@@ -15,6 +17,23 @@ export default class register_screen extends Component {
             email: '',
             pw:''
         }
+    }
+     
+    onButton = (props) => {
+
+        const { title } = props
+        const { function_passed } = props
+
+        return(
+               
+            <TouchableHighlight style={register_style.buttons} onPress={() => function_passed()}>
+
+                 <Text style={{fontWeight:'bold', fontSize:wp(1.5)+hp(1.5), color:'white'}}> {title} </Text>
+
+            </TouchableHighlight>
+
+       )
+
     }
 
     onCreateUser = async () => {
@@ -33,6 +52,8 @@ export default class register_screen extends Component {
           });
 
     }
+    
+    onStepTwo = (props) => props.navigation.navigate('Finalizar registro')
 
     render(){
 
@@ -42,30 +63,60 @@ export default class register_screen extends Component {
 
                 <Text style={register_style.title}>COMPLETA TUS DATOS</Text>
 
-                <TextInput 
-                placeholder='Correo electrónico'
-                placeholderTextColor='#3A3A3A'
-                style={register_style.inputs}
-                onChangeText={(email_wrote) => this.setState({email:email_wrote})}
-                />
+                <Input text={this.state.email} function_passed={(text) => this.setState({email:text})} placeholder_title={'Correo electrónico'}/>
+                <Input text={this.state.pw} function_passed={(text) => this.setState({pw:text})} placeholder_title={'Contraseña'}/>
 
-                <TextInput 
-                placeholder='Contraseña'
-                placeholderTextColor='#3A3A3A'
-                style={register_style.inputs}
-                onChangeText={(pw_wrote) => this.setState({pw:pw_wrote})}
-                />
-
-                <TouchableHighlight style={register_style.buttons} onPress={() => this.onCreateUser}>
-                    
-                    <Text style={{fontWeight:'bold',fontSize:wp(1.5)+hp(1.5), color:'white'}}>CONTINUAR</Text>
-
-                </TouchableHighlight>
+                <this.onButton title={'CONTINUAR'} function_passed={() => this.onStepTwo(this.props)}/>
 
             </View>
 
         )
 
+    }
+
+}
+
+export class register_two extends register_screen {
+
+
+    constructor(props){
+        super(props);
+        this.state = {
+            a: this.state.email
+        }
+    }
+
+    
+    onValidate = (text) => {
+
+        if (text.length>1) {
+
+            alert("Te has registrado con exito!")
+
+        }
+
+        else {
+
+            alert("Por favor, escribe un nombre real.")
+
+        }
+
+    }
+
+    render(){
+        return(
+
+            <View style={register_style.background}>
+                
+                <Text style={register_style.title}> ¿Como te llamas? </Text>
+
+                <Input function_passed={(text) => this.setState({name:text})} placeholder_title={'Nombre completo'}/>
+
+                <this.onButton title={'SEGUIR'} function_passed={(text) => this.setState({a:text})}/>
+
+            </View>
+
+        )
     }
 
 }
