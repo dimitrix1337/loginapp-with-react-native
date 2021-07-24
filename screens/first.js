@@ -35,7 +35,7 @@ export default class First_screen extends Component {
 
         return (
             <View style={{alignItems:'center', padding:0, justifyContent:'center'}}>
-                <Text style={first_style.title}> CAMPANA TIENDA</Text>
+                <Text style={first_style.title}> CIUDADES UNIDAS</Text>
 
                 <this.onButton title={'REGISTRARME'} function_passed={() => this.Register_screen(this.props)}/>
                 <this.onButton title={'INICIAR SESIÓN'} function_passed={() => this.Login_screen(this.props)}/>

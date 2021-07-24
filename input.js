@@ -29,7 +29,7 @@ const input = StyleSheet.create({
 
                width:wp(65),
                height:hp(8),
-               backgroundColor:'gray',
+               backgroundColor:'#A182E5',
                color:'black',
                textAlign:'center',
                borderRadius:5,

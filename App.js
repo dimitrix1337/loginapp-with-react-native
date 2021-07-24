@@ -6,6 +6,7 @@ import register_screen from './screens/register'
 import { register_two } from './screens/register'
 import { createStackNavigator } from '@react-navigation/stack';
 import acerca_de from './screens/more_info';
+import home from './screens/home';
 
 
 const Stack = createStackNavigator()
@@ -22,6 +23,8 @@ export default function app () {
           <Stack.Screen name='Iniciar sesion' component={login_screen}/>
           <Stack.Screen name='Finalizar registro' component={register_two}/>
           <Stack.Screen name='Acerca de' component={acerca_de}/>
+          <Stack.Screen name='Página principal' component={home}/>
+
 
 
     </Stack.Navigator>

@@ -5,7 +5,7 @@ import { wp, hp } from './general_style'
 export const first_style = StyleSheet.create({
 
     title:{
-        fontSize:wp(3)+hp(3),
+        fontSize:wp(3.4)+hp(3.4),
         color:'#6125E4',
         fontWeight:'bold',
         marginBottom:hp(5),

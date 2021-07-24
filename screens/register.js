@@ -4,7 +4,6 @@ import { register_style } from './register_style'
 import { wp,hp } from './general_style'
 import { Input } from '../input'
 import firebase from 'firebase'
-import Firebase from '../firebase'
 
 export default class register_screen extends Component {
 
@@ -20,12 +19,17 @@ export default class register_screen extends Component {
     onRegister = async (props) => {
 
         try {
-                await firebase.auth()
-                .createUserWithEmailAndPassword(this.state.email, this.state.pw)
-                .then(() => {
-                    alert("Registrado con exito!")
-                    props.navigation.navigate('Finalizar registro')
-                })
+                if (this.state.pw.length>=6) {
+                    await firebase.auth()
+                    .createUserWithEmailAndPassword(this.state.email, this.state.pw)
+                    .then(() => {
+                        alert("Registrado con exito!")
+                        props.navigation.navigate('Finalizar registro')
+                    })
+                }
+                else {
+                    alert("La contraseña debe contener mínimo 6 caracteres.")
+                }
             }
             catch (error) {
 
@@ -34,9 +38,14 @@ export default class register_screen extends Component {
                         alert("Este email ya está registrado!")
 
                     }
-                    if (error.code === 'auth/invalidad-email') {
+                    if (error.code === 'auth/invalid-email') {
 
                         alert("Email inexistente o inválido, reescribelo.")
+
+                    }
+                    if (error.code === 'auth/invalid-password'){
+
+                        alert("Contraseña incorrecta.")
 
                     }
                     console.log(error)
@@ -114,17 +123,14 @@ export class register_two extends register_screen {
     
     onValidate = () => {
 
-        let length_name = this.state.name.length
-        if (length_name>1) {
+        let name = this.state.name.length
 
-            alert("Te has registrado con exito " + this.state.name + " !!!")
-
+        if (name>1) {
+            alert("Solo un paso mas, inicia sesion ahora!")
+            this.props.navigation.navigate('Iniciar sesion')
         }
-
         else {
-
-            alert("Por favor, escribe un nombre real.")
-
+            alert("Escribe un nombre real por favor.")
         }
 
     }
@@ -138,7 +144,7 @@ export class register_two extends register_screen {
 
                 <Input function_passed={(text) => this.setState({name:text})} placeholder_title={'Nombre completo'}/>
 
-                <this.onButton title={'SEGUIR'} function_passed={() => this.onValidate} />
+                <this.onButton title={'SEGUIR'} function_passed={() => this.onValidate()} />
 
             </View>
 
