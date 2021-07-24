@@ -2,11 +2,9 @@ import React, { Component } from 'react'
 import { View, Text, TextInput, TouchableHighlight } from 'react-native'
 import { register_style } from './register_style'
 import { wp,hp } from './general_style'
-import validation from './validate'
-import firebase from '../firebase'
 import { Input } from '../input'
-import my_btn from './my_button'
-
+import firebase from 'firebase'
+import Firebase from '../firebase'
 
 export default class register_screen extends Component {
 
@@ -18,7 +16,34 @@ export default class register_screen extends Component {
             pw:''
         }
     }
-     
+    
+    onRegister = async (props) => {
+
+        try {
+                await firebase.auth()
+                .createUserWithEmailAndPassword(this.state.email, this.state.pw)
+                .then(() => {
+                    alert("Registrado con exito!")
+                    props.navigation.navigate('Finalizar registro')
+                })
+            }
+            catch (error) {
+
+                    if (error.code === 'auth/email-already-in-use') {
+
+                        alert("Este email ya está registrado!")
+
+                    }
+                    if (error.code === 'auth/invalidad-email') {
+
+                        alert("Email inexistente o inválido, reescribelo.")
+
+                    }
+                    console.log(error)
+                }
+
+            }
+
     onButton = (props) => {
 
         const { title } = props
@@ -35,25 +60,25 @@ export default class register_screen extends Component {
        )
 
     }
-
-    onCreateUser = async () => {
-
-        await auth.createUserWithEmailAndPassword(this.email, this.pw)
-        .then((UserCredential) => {
-
-            var user = UserCredential.user
-            alert("Registrado con exito!")
-
-        })
-        .catch((error) => {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            alert(error)
-          });
-
-    }
     
-    onStepTwo = (props) => props.navigation.navigate('Finalizar registro')
+    onStepTwo = (props) => { 
+        
+        let email = this.state.email.length
+        let pw = this.state.pw.length
+
+        if (email<1 && pw<1) {
+
+            alert("Por favor, rellena los campos.")
+
+        }
+        else {
+
+            this.onRegister(props)
+
+        }
+
+
+}
 
     render(){
 
@@ -82,16 +107,17 @@ export class register_two extends register_screen {
     constructor(props){
         super(props);
         this.state = {
-            a: this.state.email
+            name: ''
         }
     }
 
     
-    onValidate = (text) => {
+    onValidate = () => {
 
-        if (text.length>1) {
+        let length_name = this.state.name.length
+        if (length_name>1) {
 
-            alert("Te has registrado con exito!")
+            alert("Te has registrado con exito " + this.state.name + " !!!")
 
         }
 
@@ -112,7 +138,7 @@ export class register_two extends register_screen {
 
                 <Input function_passed={(text) => this.setState({name:text})} placeholder_title={'Nombre completo'}/>
 
-                <this.onButton title={'SEGUIR'} function_passed={(text) => this.setState({a:text})}/>
+                <this.onButton title={'SEGUIR'} function_passed={() => this.onValidate} />
 
             </View>
 
