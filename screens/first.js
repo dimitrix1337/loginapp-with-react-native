@@ -42,7 +42,7 @@ export default class First_screen extends Component {
 
                 <Text style={first_style.footer} onPress={() => this.More_info_screen(this.props)}>Acerca de nosotros</Text>
 
-                <Image source={require('../assets/ondas.jpg')} style={{width:wp(100), height:hp(25), marginTop:hp(10)}}/>
+                <Image source={require('../assets/ciudad.png')} style={{width:wp(100), height:hp(25), marginTop:hp(15)}}/>
 
             </View>
         )

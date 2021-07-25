@@ -20,7 +20,7 @@ export const login_style = StyleSheet.create({
         color:'#6125E4',
         fontWeight:'bold',
         marginBottom:hp(5),
-        marginTop:hp(7)
+        marginTop:hp(15)
     },
     buttons:{
         borderRadius:5,

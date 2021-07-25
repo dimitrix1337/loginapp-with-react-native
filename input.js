@@ -20,7 +20,7 @@ export const Input = (props) => {
                     color:'black',
                     textAlign:'center',
                     borderRadius:5,
-                    marginTop:hp(5),
+                    marginTop:hp(3),
                     fontSize:wp(1.8)+wp(1.8),
                     borderWidth:1,
                     borderColor:'black',

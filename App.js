@@ -20,12 +20,12 @@ export default function app () {
 
     <Stack.Navigator initialRouteName='First' animationEnabled={true}>
 
-          <Stack.Screen name='Inicio' component={First_screen}/>
+          <Stack.Screen name='Inicio' component={First_screen} options={{headerShown:false}}/>
           <Stack.Screen name='Registro' component={register_screen}/>
-          <Stack.Screen name='Iniciar sesion' component={login_screen}/>
-          <Stack.Screen name='Finalizar registro' component={register_two}/>
+          <Stack.Screen name='Iniciar sesion' component={login_screen} options={{headerShown:false}}/>
+          <Stack.Screen name='Finalizar registro' component={register_two} options={{headerTitle:'Iniciar sesión', headerStyle:{backgroundColor:'#6125E4'}}}/>
           <Stack.Screen name='Acerca de' component={acerca_de}/>
-          <Stack.Screen name='Página principal' component={home}/>
+          <Stack.Screen name='Página principal' component={home} options={{headerShown:false, headerTitle:'Página Principal'}}/>
           <Stack.Screen name='Recuperar contraseña' component={reset_password}/>
 
 

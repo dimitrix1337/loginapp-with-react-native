@@ -5,6 +5,7 @@ import { wp,hp } from './general_style'
 import { Input } from '../input'
 import firebase from 'firebase'
 import Firebase from '../firebase'
+import Loader from './loading_screen'
 
 export default class register_screen extends Component {
 
@@ -15,30 +16,47 @@ export default class register_screen extends Component {
             email: '',
             pw:'',
             color_de: 'white',
-            color_text: 'blue'
+            color_text: 'blue',
+            loading: false
         }
     }
 
     onLogin = async () => {
-        try {
-            await firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.pw)
-            .then(() => {
 
-                this.props.navigation.navigate('Página principal')
+        if (this.state.email.length>1 && this.state.pw.length>1) {
 
-            })
+            this.setState({loading:true})
+            
+            try {
+                await firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.pw)
+                .then(() => {
+
+                    this.setState({loading:false})
+                    this.props.navigation.navigate('Página principal')
+
+                })
+            }
+            catch (error) {
+
+                alert(error)
+                this.setState({loading:false})
+
+            }
         }
-        catch (error) {
-
-            alert(error)
-
+        else {
+            alert("Por favor, completa los campos.")
         }
 
     }
 
 
-
     render(){
+
+        if (this.state.loading) {
+
+            return ( <Loader/> )
+
+        }
 
         return(
 
@@ -50,6 +68,7 @@ export default class register_screen extends Component {
                 <Input secure={false} text={this.state.email} function_passed={(text) => this.setState({email:text})} placeholder_title={'Correo electrónico'} color_back={this.state.color_de} />
                 <Input secure={true} text={this.state.pw} function_passed={(text) => this.setState({pw:text})} placeholder_title={'Contraseña'} color_back={this.state.color_de} />
                 <Text style={{color:'blue', marginTop:hp(3), fontWeight:'600'}} onPress={() => this.props.navigation.navigate('Recuperar contraseña')}>Olvidé mi contraseña</Text>
+                <Text style={{color:'gray', marginTop:hp(3), fontWeight:'500'}} onPress={() => this.props.navigation.navigate('Registro')}>Crear cuenta nueva</Text>
 
                 <TouchableHighlight style={login_style.buttons} onPress={() => this.onLogin()}>
                     
