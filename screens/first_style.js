@@ -5,7 +5,7 @@ import { wp, hp } from './general_style'
 export const first_style = StyleSheet.create({
 
     title:{
-        fontSize:wp(3.4)+hp(3.4),
+        fontSize:wp(3)+hp(3),
         color:'#6125E4',
         fontWeight:'bold',
         marginBottom:hp(5),
@@ -24,7 +24,8 @@ export const first_style = StyleSheet.create({
     footer:{
         fontSize:hp(1.3)+wp(1.3),
         marginTop:(11),
-        color:'gray'
+        color:'gray',
+        backgroundColor:'#white'
     }
 
 })

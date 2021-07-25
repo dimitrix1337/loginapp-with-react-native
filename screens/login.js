@@ -13,7 +13,9 @@ export default class register_screen extends Component {
 
         this.state = { 
             email: '',
-            pw:''
+            pw:'',
+            color_de: 'white',
+            color_text: 'blue'
         }
     }
 
@@ -34,6 +36,8 @@ export default class register_screen extends Component {
 
     }
 
+
+
     render(){
 
         return(
@@ -43,15 +47,17 @@ export default class register_screen extends Component {
 
                 <Text style={login_style.title}>Bienvenido</Text>
 
-                <Input text={this.state.email} function_passed={(text) => this.setState({email:text})} placeholder_title={'Correo electrónico'}/>
-                <Input text={this.state.pw} function_passed={(text) => this.setState({pw:text})} placeholder_title={'Contraseña'}/>
-
+                <Input secure={false} text={this.state.email} function_passed={(text) => this.setState({email:text})} placeholder_title={'Correo electrónico'} color_back={this.state.color_de} />
+                <Input secure={true} text={this.state.pw} function_passed={(text) => this.setState({pw:text})} placeholder_title={'Contraseña'} color_back={this.state.color_de} />
+                <Text style={{color:'blue', marginTop:hp(3), fontWeight:'600'}} onPress={() => this.props.navigation.navigate('Recuperar contraseña')}>Olvidé mi contraseña</Text>
 
                 <TouchableHighlight style={login_style.buttons} onPress={() => this.onLogin()}>
                     
                     <Text style={{fontWeight:'bold',fontSize:wp(1.5)+hp(1.5), color:'white'}}>INICIARME</Text>
 
                 </TouchableHighlight>
+
+                <Text style={{color:'gray', fontWeight:'600', marginTop:hp(15)}}>CIUDADES UNIDAS</Text>
 
             </View>
 

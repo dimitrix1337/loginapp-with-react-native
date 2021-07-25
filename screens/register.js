@@ -12,7 +12,8 @@ export default class register_screen extends Component {
 
         this.state = { 
             email: '',
-            pw:''
+            pw:'',
+            color_de:'white'
         }
     }
     
@@ -60,7 +61,7 @@ export default class register_screen extends Component {
 
         return(
                
-            <TouchableHighlight style={register_style.buttons} onPress={() => function_passed()}>
+            <TouchableHighlight style={register_style.buttons} onPress={() => function_passed()} underlayColor='black'>
 
                  <Text style={{fontWeight:'bold', fontSize:wp(1.5)+hp(1.5), color:'white'}}> {title} </Text>
 
@@ -97,10 +98,12 @@ export default class register_screen extends Component {
 
                 <Text style={register_style.title}>COMPLETA TUS DATOS</Text>
 
-                <Input text={this.state.email} function_passed={(text) => this.setState({email:text})} placeholder_title={'Correo electrónico'}/>
-                <Input text={this.state.pw} function_passed={(text) => this.setState({pw:text})} placeholder_title={'Contraseña'}/>
+                <Input secure={false} text={this.state.email} function_passed={(text) => this.setState({email:text})} placeholder_title={'Correo electrónico'} color_back={this.state.color_de}/>
+                <Input secure={true} text={this.state.pw} function_passed={(text) => this.setState({pw:text})} placeholder_title={'Contraseña'} color_back={this.state.color_de}/>
 
                 <this.onButton title={'CONTINUAR'} function_passed={() => this.onStepTwo(this.props)}/>
+
+                <Text style={{color:'gray', fontWeight:'600', marginTop:hp(15)}}>CIUDADES UNIDAS</Text>
 
             </View>
 
@@ -116,7 +119,8 @@ export class register_two extends register_screen {
     constructor(props){
         super(props);
         this.state = {
-            name: ''
+            name: '',
+            color_de: 'white',
         }
     }
 
@@ -142,9 +146,12 @@ export class register_two extends register_screen {
                 
                 <Text style={register_style.title}> ¿Como te llamas? </Text>
 
-                <Input function_passed={(text) => this.setState({name:text})} placeholder_title={'Nombre completo'}/>
+                <Input function_passed={(text) => this.setState({name:text})} placeholder_title={'Nombre completo'} color_back={this.state.color_de}/>
 
                 <this.onButton title={'SEGUIR'} function_passed={() => this.onValidate()} />
+
+                <Text style={{color:'gray', fontWeight:'600', marginTop:hp(15)}}>CIUDADES UNIDAS</Text>
+
 
             </View>
 
