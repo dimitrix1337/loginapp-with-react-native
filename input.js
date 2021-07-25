@@ -1,6 +1,5 @@
 import React from 'react'
 import { StyleSheet, TextInput } from 'react-native'
-import { color } from 'react-native-reanimated';
 import { wp, hp } from './screens/general_style';
 
 export const Input = (props) => {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput, TouchableHighlight, Switch, Picker } from 'react-native'
+import { View, Text, TouchableHighlight, Switch, Picker } from 'react-native'
 import { register_style } from './register_style'
 import { wp,hp } from './general_style'
 import { Input } from '../input'

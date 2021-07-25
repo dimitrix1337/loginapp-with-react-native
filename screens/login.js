@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput, TouchableHighlight } from 'react-native'
+import { View, Text, TouchableHighlight } from 'react-native'
 import { login_style } from './login_style'
 import { wp,hp } from './general_style'
 import { Input } from '../input'

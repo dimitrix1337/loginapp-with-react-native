@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, Alert } from 'react-native'
+import { View, Text } from 'react-native'
 import firebase from 'firebase'
 import Firebase from '../firebase'
 
@@ -11,25 +11,27 @@ export default class home extends Component {
 
     onExit = async () => {
 
-        await firebase.auth().signOut()
-        .then(() => this.props.navigation.navigate('Inicio'))
-        /*Alert.alert(
-            "Confirmar",
-            "¿Deseas salir de tu cuenta?",
-            [
-              {
-                text: "NO",
-                onPress: () => console.log("Cancel Pressed"),
-                style: "cancel"
-              },
-              { text: "SI", onPress: () => { console.log("OK Pressed")
-              firebase.auth().signOut()
-              this.props.navigation.navigate('Inicio')
-            } }
-            ]
-          );*/
+        try {
+            
+            Alert.alert(
+                "Confirmar",
+                "¿Deseas salir de tu cuenta?",
+                [
+                {
+                    text: "NO",
+                    onPress: () => console.log("Cancel Pressed"),
+                    style: "cancel"
+                },
+                { text: "SI", onPress: () => { console.log("OK Pressed")
+                    await firebase.auth().signOut()   
+                    this.props.navigation.navigate('Inicio')
+                } }
+                ]
+            );
 
     }
+    catch (error) { alert(error) }
+}
 
     render(){
 

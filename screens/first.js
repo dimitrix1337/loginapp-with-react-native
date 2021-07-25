@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput, TouchableHighlight, Image } from 'react-native'
+import { View, Text, TouchableHighlight, Image } from 'react-native'
 import { first_style } from './first_style'
 import { wp,hp } from './general_style'
 
