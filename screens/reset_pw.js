@@ -3,6 +3,9 @@ import { View, Text, TouchableHighlight } from 'react-native'
 import { Input } from '../input'
 import { hp, wp } from './general_style'
 import { login_style } from './login_style'
+import firebase from 'firebase'
+import Firebase from '../firebase'
+
 
 export default class reset_password extends Component {
 
@@ -16,9 +19,24 @@ export default class reset_password extends Component {
           })
      }
 
-     onSendEmail = () => {
+     onSendEmail = async () => {
 
-          alert("Sending email...")
+          if (this.state.email.length>1) {
+               try {
+
+                    await firebase.auth().sendPasswordResetEmail(this.state.email)
+                    .then(() => alert("Email enviado!"))
+
+               }
+               catch (error) {
+
+                    alert(error)
+
+               }
+          }
+          else {
+               alert("Completa el campo por favor.")
+          }
      }
 
 

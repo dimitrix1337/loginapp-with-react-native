@@ -9,9 +9,11 @@ export default class home extends Component {
         super(props)
     }
 
-    onExit = () => {
+    onExit = async () => {
 
-        Alert.alert(
+        await firebase.auth().signOut()
+        .then(() => this.props.navigation.navigate('Inicio'))
+        /*Alert.alert(
             "Confirmar",
             "¿Deseas salir de tu cuenta?",
             [
@@ -25,7 +27,7 @@ export default class home extends Component {
               this.props.navigation.navigate('Inicio')
             } }
             ]
-          );
+          );*/
 
     }
 

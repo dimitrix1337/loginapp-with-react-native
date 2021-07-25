@@ -14,7 +14,7 @@ export const register_style = StyleSheet.create({
         color:'#6125E4',
         fontWeight:'bold',
         marginBottom:hp(5),
-        marginTop:hp(10)
+        marginTop:hp(7)
     },
     buttons:{
         borderRadius:5,

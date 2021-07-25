@@ -200,7 +200,7 @@ export class register_two extends register_screen {
 
             <View style={register_style.background}>
             
-            <View style={{marginTop:hp(5), alignItems:'center'}}>
+            <View style={{marginTop:hp(0), alignItems:'center'}}>
                 <Text style={register_style.title}> ¿Cómo te llamás? </Text>
 
                 <Input function_passed={(text) => this.setState({name:text})} placeholder_title={'Nombre completo'} color_back={this.state.color_de}/>
@@ -231,7 +231,7 @@ export class register_two extends register_screen {
 
                 <this.onButton title={'SEGUIR'} function_passed={() => this.onValidate()} />
 
-                <Text style={{color:'gray', fontWeight:'600', marginTop:hp(15)}}>CIUDADES UNIDAS</Text>
+                <Text style={{color:'gray', fontWeight:'600', marginTop:hp(7)}}>CIUDADES UNIDAS</Text>
             </View>
 
             </View>
