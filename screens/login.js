@@ -64,7 +64,7 @@ export default class register_screen extends Component {
 
 
                 <Text style={login_style.title}>Bienvenido</Text>
-
+                <Text style={{color:'black', fontWeight:'600', marginBottom:hp(2)}}>A ciudades unidas con vos.</Text>
                 <Input secure={false} text={this.state.email} function_passed={(text) => this.setState({email:text})} placeholder_title={'Correo electrónico'} color_back={this.state.color_de} />
                 <Input secure={true} text={this.state.pw} function_passed={(text) => this.setState({pw:text})} placeholder_title={'Contraseña'} color_back={this.state.color_de} />
                 <Text style={{color:'blue', marginTop:hp(3), fontWeight:'600'}} onPress={() => this.props.navigation.navigate('Recuperar contraseña')}>Olvidé mi contraseña</Text>

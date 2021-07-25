@@ -21,12 +21,12 @@ export default function app () {
     <Stack.Navigator initialRouteName='First' animationEnabled={true}>
 
           <Stack.Screen name='Inicio' component={First_screen} options={{headerShown:false}}/>
-          <Stack.Screen name='Registro' component={register_screen}/>
+          <Stack.Screen name='Registro' component={register_screen} options={{headerTitleAlign:'center'}}/>
           <Stack.Screen name='Iniciar sesion' component={login_screen} options={{headerShown:false}}/>
-          <Stack.Screen name='Finalizar registro' component={register_two} options={{headerTitle:'Atrás'}}/>
-          <Stack.Screen name='Acerca de' component={acerca_de}/>
-          <Stack.Screen name='Página principal' component={home} options={{headerShown:false, headerTitle:'Página Principal'}}/>
-          <Stack.Screen name='Recuperar contraseña' component={reset_password}/>
+          <Stack.Screen name='Finalizar registro' component={register_two} options={{headerTitle:'Paso final', headerTitleAlign:'center'}}/>
+          <Stack.Screen name='Acerca de' component={acerca_de} options={{headerTitleAlign:'center'}}/>
+          <Stack.Screen name='Página principal' component={home} options={{headerShown:false, headerTitle:'Página Principal', headerTitleAlign:'center'}}/>
+          <Stack.Screen name='Recuperar contraseña' component={reset_password} options={{headerTitleAlign:'center'}}/>
 
 
     </Stack.Navigator>

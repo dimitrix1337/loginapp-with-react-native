@@ -19,7 +19,7 @@ export const login_style = StyleSheet.create({
         fontSize:wp(3)+hp(3),
         color:'#6125E4',
         fontWeight:'bold',
-        marginBottom:hp(5),
+        marginBottom:hp(0),
         marginTop:hp(15)
     },
     buttons:{
