@@ -22,7 +22,7 @@ export default class home extends Component {
                     onPress: () => console.log("Cancel Pressed"),
                     style: "cancel"
                 },
-                { text: "SI", onPress: () => { console.log("OK Pressed")
+                { text: "SI", onPress: () => { console.log("YES Pressed")
                     await firebase.auth().signOut()   
                     this.props.navigation.navigate('Inicio')
                 } }
